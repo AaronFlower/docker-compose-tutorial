@@ -1,10 +1,19 @@
 version: '3'
 
 services:
-  product-service:
-    build: ./product
+  product-service: # 本地容器微服务名称
+    build: ./product # 相对路径
     volumes:
-      - ./product:/usr/src/app/
+      - ./product:/usr/src/app/ # volumes 挂载可以实时刷新
     ports:
-      - 5001:80
+      - 5001:80 # python Flask 启动的微服务端口
+  
+  website:
+    image: php:apache
+    volumes:
+      - ./website:/var/www/html/
+    ports:
+      - 5000:80
+    depends_on: # 所依赖的微服务
+      - product-service
 

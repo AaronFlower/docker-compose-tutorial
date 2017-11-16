@@ -11,7 +11,7 @@ api = Api(app)
 class Product(Resource):
     def get(self):
         return {
-            'products': ['Ice cream', 'Chocolate', 'Football', 'Shoes']
+            'products': ['Ice cream', 'Chocolate', 'Football', 'Shoes', 'Flowers']
         }
 
 
